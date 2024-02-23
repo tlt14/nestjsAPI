@@ -1,7 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { GradesService } from './grades.service';
 import { CreateGradeDto } from './dto/create-grade.dto';
 import { UpdateGradeDto } from './dto/update-grade.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { Roles } from 'src/auth/role.decorator';
+import Role from 'src/constants/role.enum';
+import { RolesGuard } from 'src/auth/guards/role.guard';
+import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
 
 @Controller('grades')
 export class GradesController {
@@ -11,8 +16,9 @@ export class GradesController {
   create(@Body() createGradeDto: CreateGradeDto) {
     return this.gradesService.create(createGradeDto);
   }
-
   @Get()
+  // @Roles(Role.ADMIN)
+  // @UseGuards(AccessTokenGuard, RolesGuard)
   findAll() {
     return this.gradesService.findAll();
   }

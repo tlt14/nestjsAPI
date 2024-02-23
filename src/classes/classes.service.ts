@@ -17,7 +17,7 @@ export class ClassesService {
 
   findAll() {
     return this.classesRepository.find({
-      relations: ['grade', 'academic_year', 'students'],
+      relations: ['grade', 'students'],
     });
   }
 

@@ -1,6 +1,6 @@
-enum Roles {
-  Admin = 'admin',
-  User = 'user',
-  Guest = 'guest',
+enum Role {
+  ADMIN = 'ADMIN',
+  GLV = 'GLV',
+  GUEST = 'GUEST',
 }
-export default Roles;
+export default Role;

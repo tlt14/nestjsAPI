@@ -6,6 +6,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 type JwtPayload = {
   sub: string;
   username: string;
+  roles: string;
 };
 
 @Injectable()
@@ -18,6 +19,7 @@ export class AccessTokenStrategy extends PassportStrategy(Strategy, 'jwt') {
   }
 
   validate(payload: JwtPayload) {
+    console.log(payload);
     return payload;
   }
 }

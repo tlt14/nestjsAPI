@@ -5,13 +5,14 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { AcademicYearModule } from './academic_year/academic_year.module';
 import { GradesModule } from './grades/grades.module';
 import { ClassesModule } from './classes/classes.module';
 import { StudentsModule } from './students/students.module';
 import { AttendanceSessionsModule } from './attendance-sessions/attendance-sessions.module';
 import { AttendanceRecordsModule } from './attendance-records/attendance-records.module';
 import { ScoresModule } from './scores/scores.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { RolesGuard } from './auth/guards/role.guard';
 
 @Module({
   imports: [
@@ -30,15 +31,16 @@ import { ScoresModule } from './scores/scores.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    AcademicYearModule,
+    // AcademicYearModule,
     GradesModule,
     ClassesModule,
     StudentsModule,
     AttendanceSessionsModule,
     AttendanceRecordsModule,
     ScoresModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, RolesGuard],
 })
 export class AppModule {}
