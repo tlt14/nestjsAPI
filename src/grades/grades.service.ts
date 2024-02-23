@@ -25,7 +25,7 @@ export class GradesService {
     return this.gradesRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateGradeDto: UpdateGradeDto) {
+  update(id: string, updateGradeDto: UpdateGradeDto) {
     return this.gradesRepository.update(id, updateGradeDto);
   }
 
